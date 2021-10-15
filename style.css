@@ -1,0 +1,36 @@
+button {
+	width: 100%;
+	border-width: 0;
+	border-radius: 3px;
+    padding: 5px;
+}
+
+#popupTable {
+	width: 200px;
+	table-layout: fixed;	
+}
+
+#optionsContainer {
+	display: flex;
+	justify-content: center;
+	margin-top: 100px;
+}
+
+#optionsForm {
+	display: inline-block;
+	padding: 50px;
+    border-radius: 10px;
+    background-color: #fbfbfb;
+}
+
+#downloadFolderInput {
+	width: 500px;
+}
+
+.settingBtn {
+	background-color: #e1e1e1;
+}
+
+.actionBtn {
+    background-color: #ffaca5;
+}
