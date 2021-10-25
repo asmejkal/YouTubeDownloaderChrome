@@ -70,7 +70,7 @@ namespace NativeHost
             var output = Path.Join(downloadFolder.FullName, "%(title)s-%(id)s.%(ext)s")
                 .Replace("\\", "\\\\");
 
-            var command = $"youtube-dl -f bestvideo+bestaudio --no-mtime -o '{output}' '{url}'";
+            var command = $"yt-dlp -f bestvideo+bestaudio --no-mtime -o '{output}' '{url}'";
 
             var process = Process.Start("powershell.exe", $"-NoExit -Command {command}");
             process.WaitForExit();
@@ -83,15 +83,15 @@ namespace NativeHost
             var to = TimeSpan.FromSeconds((double)data["to"]);
 
             var fileNameSuffix = from.ToString(FilenameSuffixFormat) + "-" + to.ToString(FilenameSuffixFormat);
-            var output = Path.Join(downloadFolder.FullName, $"%(title)s-%(id)s-{fileNameSuffix}.%(ext)s")
+            var output = Path.Join(downloadFolder.FullName, $"%(title)s-%(id)s-{fileNameSuffix}.mp4")
                 .Replace("\\", "\\\\");
 
             var timeParams = $"-ss {from.ToString(FFmpegTimeFormat)} -to {to.ToString(FFmpegTimeFormat)}";
-            var videoInput = $"\"$(youtube-dl -f bestvideo --get-url '{url}')\"";
-            var audioInput = $"\"$(youtube-dl -f bestaudio --get-url '{url}')\"";
-            var fileName = $"\"$(youtube-dl --get-filename -o '{output}' '{url}')\"";
+            var videoInput = $"\"$(yt-dlp -f bestvideo --get-url '{url}')\"";
+            var audioInput = $"\"$(yt-dlp -f bestaudio --get-url '{url}')\"";
+            var fileName = $"\"$(yt-dlp --get-filename -o '{output}' '{url}')\"";
             
-            var command = $"ffmpeg {timeParams} -i {videoInput} {timeParams} -i {audioInput} {fileName}";
+            var command = $"ffmpeg {timeParams} -i {videoInput} {timeParams} -i {audioInput} -c:v libx264 -crf 17 {fileName}";
 
             var process = Process.Start("powershell.exe", $"-NoExit -Command {command}");
             process.WaitForExit();
