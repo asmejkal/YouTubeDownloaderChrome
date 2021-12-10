@@ -1,20 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-	<div id="optionsContainer">
-      <form id="optionsForm">
-		<h1>Options</h1>
-	    <label for="downloadFolder">Download folder:</label>
-	    <br/>
-	    <input type="text" id="downloadFolderInput" name="downloadFolderInput" value="">
-	    <br/>
-	    <br/>
-	    <button type="submit" class="actionBtn">Save</button>
-	  </form>
-	</div>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <title>YouTube Downloader Options</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container mt-5">
+            <div class="row justify-content-center me-md-3">
+                <div class="col-6 bg-light p-5 rounded-3">
+                    <div>
+                        <img src="icon.png" style="height: 4em; display: inline">
+                        <h1 style="display: inline; vertical-align: middle; margin-left: 0.2em"> Options</h1>
+                    </div>
+                    <form id="optionsForm" action="#" class="mt-4">
+                        <div class="mb-3">
+                            <label for="ytDlpPathInput" class="form-label">YT-DLP path</label>
+                            <input type="text" class="form-control" id="ytDlpPathInput" value="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ffmpegPathInput" class="form-label">FFMPEG path</label>
+                            <input type="text" class="form-control" id="ffmpegPathInput" value="" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="enableLogsInput">
+                            <label class="form-check-label" for="enableLogsInput">Enable logs</label>
+                        </div>
+                        <fieldset class="form-group">
+                            <legend>Advanced</legend>
+                            <div class="mb-3">
+                                <label for="ytDlpArgumentsInput" class="form-label">YT-DLP arguments</label>
+                                <input type="text" class="form-control" id="ytDlpArgumentsInput" placeholder="-f bestvideo+bestaudio" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="ffmpegSegmentArgumentsInput" class="form-label">Segment download FFMPEG arguments</label>
+                                <input type="text" class="form-control" id="ffmpegSegmentArgumentsInput" placeholder="-c:v libx264 -crf 17 -f mp4 -movflags empty_moov" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fileNameTemplateInput" class="form-label">Filename template</label>
+                                <input type="text" class="form-control" id="fileNameTemplateInput" placeholder="%(title)s-%(id)s.%(ext)s" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="segmentFileNameTemplateInput" class="form-label">Segment filename template</label>
+                                <input type="text" class="form-control" id="segmentFileNameTemplateInput" placeholder="%(title)s-%(id)s-%(from)s-%(to)s.mp4" value="">
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btn btn-primary w-25 mt-3" id="saveBtn">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="options.js"></script>
-  </body>
+</body>
 </html>

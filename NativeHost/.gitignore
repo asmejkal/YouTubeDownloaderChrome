@@ -1,0 +1,37 @@
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+.history/*
+
+# IDE - VS
+.vs/
+bin/
+obj/
+*.user
+
+# Node modules
+node_modules
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# SQL project
+*.dbmdl
+*.jfm
+
+# Development files
+*.user.pubxml
+*.user.publish.xml
+*.user.sql
+*.user.cs
+*.user.json

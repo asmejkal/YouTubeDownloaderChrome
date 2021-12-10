@@ -16,6 +16,6 @@
     },
 	"default_popup": "popup.html"
   },
-  "permissions": ["nativeMessaging", "tabs", "scripting", "storage", "declarativeContent" ],
+  "permissions": ["nativeMessaging", "tabs", "scripting", "storage", "declarativeContent", "downloads" ],
   "host_permissions": ["*://www.youtube.com/"]
 }

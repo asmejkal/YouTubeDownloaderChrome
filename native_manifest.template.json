@@ -1,9 +1,9 @@
 {
   "name": "com.asmejkal.youtubedownloader",
   "description": "YouTube Downloader",
-  "path": "NativeHost\\bin\\Release\\net5.0-windows\\NativeHost.exe",
+  "path": "NativeHost\\bin\\Release\\net6.0\\NativeHost.exe",
   "type": "stdio",
   "allowed_origins": [
-    "chrome-extension://COPIED ID GOES HERE/"
+    "chrome-extension://{EXTENSION_ID}/"
   ]
 }

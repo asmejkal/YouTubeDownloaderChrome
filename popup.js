@@ -1,22 +1,31 @@
-chrome.storage.local.get(['from', 'to', 'downloadFolder'], function(result) {
+chrome.storage.local.get(['from', 'to', 'ytDlpPath', 'ffmpegPath'], function(result) {
 	document.getElementById('fromSpan').textContent = getTimespanString(result.from);
 	document.getElementById('toSpan').textContent = getTimespanString(result.to);
 	
-	if (result.downloadFolder == undefined) {
+	if (!result.ytDlpPath || !result.ffmpegPath) {
 		chrome.runtime.openOptionsPage();
 	}
 });
 
 downloadBtn.addEventListener('click', async () => {
-	let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  
-	chrome.storage.local.get(['downloadFolder'], function(result) {
-		chrome.runtime.sendNativeMessage('com.asmejkal.youtubedownloader', 
-			{ cmd: 'download', url: tab.url, downloadFolder: result.downloadFolder },
-			(response) => {
-				console.log('Response: ' + response.code + ' Data: ' + response.data);
-			});
+	chrome.runtime.sendMessage({ type: 'download', startDownload: true });
+	window.close();
+});
+
+downloadAsBtn.addEventListener('click', () => {
+	document.body.classList.toggle('loading');
+	chrome.runtime.sendMessage({ type: 'download', startDownload: false }, (response) => {
+		console.log('Starting download as... of ' + response.url);
+		
+		chrome.downloads.download({ url: response.url, saveAs: true }, (_) => {
+			document.body.classList.toggle('loading');
+		});
 	});
+});
+
+downloadSegmentBtn.addEventListener('click', async () => {	
+	chrome.runtime.sendMessage({ type: 'downloadSegment', startDownload: true });
+	window.close();
 });
 
 setFromBtn.addEventListener('click', async () => {
@@ -51,18 +60,6 @@ setToBtn.addEventListener('click', async () => {
 			
 			document.getElementById('toSpan').textContent = getTimespanString(to);
 		});
-});
-
-downloadSegmentBtn.addEventListener('click', async () => {	
-	let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-	chrome.storage.local.get(['from', 'to', 'downloadFolder'], function(result) {
-		chrome.runtime.sendNativeMessage('com.asmejkal.youtubedownloader', 
-			{ cmd: 'downloadSegment', from: result.from, to: result.to, url: tab.url, downloadFolder: result.downloadFolder },
-			(response) => {
-				console.log('Response: ' + response.code + ' Data: ' + response.data);
-			});
-	});
 });
 
 function getPlayerCurrentTime() {
