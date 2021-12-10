@@ -4,7 +4,7 @@ Runs youtube-dl and ffmpeg for you to download the current video or a specified 
 Google bans extensions that download YouTube videos from the store. It also doesn't allow you to install extensions outside of the Chrome Web Store, so the extension needs to be installed manually.
 
 ## How to install
-1. Install these prerequisites: youtube-dl, ffmpeg, and dotnet 6.0 Windows SDK
+1. Install these prerequisites: youtube-dlp, ffmpeg, and dotnet 6.0 Windows SDK
 2. Clone or download the repository
 3. Go to the Chrome Extensions page at `chrome://extensions`
 4. Turn on Developer Mode
