@@ -4,17 +4,17 @@ Runs youtube-dl and ffmpeg for you to download the current video or a specified 
 Google bans extensions that download YouTube videos from the store. It also doesn't allow you to install extensions outside of the Chrome Web Store, so the extension needs to be installed manually.
 
 ## How to install
-- Install these prerequisites: youtube-dl, ffmpeg, and dotnet 6.0 Windows SDK
-- Clone or download the repository
-- Go to the Chrome Extensions page at `chrome://extensions`
-- Turn on Developer Mode
-- Click Load Unpacked and select the cloned folder
-- Run install.ps1 with PowerShell
+1. Install these prerequisites: youtube-dl, ffmpeg, and dotnet 6.0 Windows SDK
+2. Clone or download the repository
+3. Go to the Chrome Extensions page at `chrome://extensions`
+4. Turn on Developer Mode
+5. Click Load Unpacked and select the cloned folder
+6. Run install.ps1 with PowerShell
 
 ## Uninstall
-- Run uninstall.ps1 with PowerShell
-- Go to the Chrome Extensions page at `chrome://extensions`
-- Remove the extension
+1. Run uninstall.ps1 with PowerShell
+2. Go to the Chrome Extensions page at `chrome://extensions`
+3. Remove the extension
 
 ## Troubleshoot
 1. Run `reg query HKEY_LOCAL_MACHINE\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.asmejkal.youtubedownloader`
