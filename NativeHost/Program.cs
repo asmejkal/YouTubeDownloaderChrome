@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using NativeHost.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -89,16 +90,21 @@ namespace NativeHost
 
             var services = new ServiceCollection();
 
-            if (message.EnableLogs)
-            {
+            
                 services.AddLogging(x =>
                 {
-                    var logger = new LoggerConfiguration()
-                        .WriteTo.File(CreateLogFilePath());
+                    if (message.EnableLogs)
+                    {
+                        var logger = new LoggerConfiguration()
+                            .WriteTo.File(CreateLogFilePath());
 
-                    x.AddSerilog(logger.CreateLogger());
+                        x.AddSerilog(logger.CreateLogger());
+                    }
+                    else
+                    {
+                        x.AddProvider(NullLoggerProvider.Instance);
+                    }
                 });
-            }
 
             services.Configure<YouTubeDlpOptions>(x =>
             {
