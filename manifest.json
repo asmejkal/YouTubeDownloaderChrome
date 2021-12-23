@@ -24,15 +24,15 @@
     },
     "downloadSegment": {
       "suggested_key": "Alt+Shift+S",
-      "description": "Download video segment"
+      "description": "Download clip"
     },
 	"setFrom": {
       "suggested_key": "Alt+Comma",
-      "description": "Set segment beginning"
+      "description": "Set clip beginning"
     },
 	"setTo": {
       "suggested_key": "Alt+Period",
-      "description": "Set segment ending"
+      "description": "Set clip ending"
     }
   },
   "permissions": ["nativeMessaging", "tabs", "scripting", "storage", "declarativeContent", "downloads" ],
