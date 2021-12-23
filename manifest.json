@@ -8,13 +8,32 @@
   },
   "options_page": "options.html",
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+	"type": "module"
   },
   "action": {
     "default_icon": {
       "128": "img/icon.png"
     },
 	"default_popup": "popup.html"
+  },
+  "commands": {
+    "download": {
+      "suggested_key": "Alt+S",
+      "description": "Download video"
+    },
+    "downloadSegment": {
+      "suggested_key": "Alt+Shift+S",
+      "description": "Download video segment"
+    },
+	"setFrom": {
+      "suggested_key": "Alt+Comma",
+      "description": "Set segment beginning"
+    },
+	"setTo": {
+      "suggested_key": "Alt+Period",
+      "description": "Set segment ending"
+    }
   },
   "permissions": ["nativeMessaging", "tabs", "scripting", "storage", "declarativeContent", "downloads" ],
   "host_permissions": ["*://www.youtube.com/"]

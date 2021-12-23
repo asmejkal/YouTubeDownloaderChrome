@@ -43,3 +43,9 @@ optionsForm.addEventListener('submit', e => {
 	
 	e.preventDefault();
 });
+
+configureShortcutsBtn.addEventListener('click', () => {
+	chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+		chrome.tabs.create({ url: 'chrome://extensions/shortcuts', active: true, index: tabs[0].index + 1, openerTabId: tabs[0].id });
+	});
+});
